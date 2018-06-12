@@ -1,6 +1,7 @@
 # ad-project
 
-> A Vue.js project
+> This is my first training project in Vue.js course. 
+> The training is provided by WebForMyself team.
 
 ## Build Setup
 
