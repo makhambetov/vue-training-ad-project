@@ -38,6 +38,7 @@
             flat
             v-for="link in links"
             :to="link.url"
+            :key="link.title"
           >
             <v-icon left>{{link.icon}}</v-icon>
             {{link.title}}

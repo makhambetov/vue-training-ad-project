@@ -1,8 +1,40 @@
 <template>
   <v-container>
     <v-layout row>
-      <v-flex xs12>
-        <h1>Ad list</h1>
+      <v-flex xs12 sm6 offset-sm3>
+        <h1 class="text--secondary mb-3">My ads</h1>
+
+        <v-card
+          v-for="ad in ads"
+          :key="ad.id"
+          class="mb-3 elevation-7"
+        >
+          <v-layout row>
+            <v-flex xs4>
+              <v-card-media
+                :src="ad.imageSrc"
+                height="160px"
+              ></v-card-media>
+
+            </v-flex>
+            <v-flex xs8>
+              <v-card-text>
+                <h2 class="text--primary">{{ad.title}}</h2>
+                <p >{{ad.description}}</p>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  class="info"
+                  :to="'/ad/' + ad.id"
+                >
+                  Open
+                </v-btn>
+              </v-card-actions>
+            </v-flex>
+          </v-layout>
+        </v-card>
+
       </v-flex>
     </v-layout>
   </v-container>
@@ -11,7 +43,31 @@
 <script>
   export default {
     data () {
-      return {}
+      return {
+        ads: [
+          {
+            title: 'First ad',
+            description: 'Description',
+            promo: false,
+            imageSrc: 'https://vuetifyjs.com/static/doc-images/carousel/planet.jpg',
+            id: 1
+          },
+          {
+            title: 'Second ad',
+            description: 'Description',
+            promo: true,
+            imageSrc: 'https://vuetifyjs.com/static/doc-images/carousel/bird.jpg',
+            id: 2
+          },
+          {
+            title: 'Third ad',
+            description: 'Description',
+            promo: true,
+            imageSrc: 'https://vuetifyjs.com/static/doc-images/carousel/squirrel.jpg',
+            id: 3
+          }
+        ]
+      }
     }
   }
 </script>
