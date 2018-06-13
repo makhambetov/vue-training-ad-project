@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
+import * as fb from 'firebase'
 import 'vuetify/dist/vuetify.min.css'
 import store from './store'
 
@@ -17,5 +18,15 @@ new Vue({
   router,
   store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  created () {
+    fb.initializeApp({
+      apiKey: 'AIzaSyCEE7vxDQSWkMgtbmI8rPqqyQXD7PsRzUw',
+      authDomain: 'ads-spa.firebaseapp.com',
+      databaseURL: 'https://ads-spa.firebaseio.com',
+      projectId: 'ads-spa',
+      storageBucket: 'ads-spa.appspot.com',
+      messagingSenderId: '874130725527'
+    })
+  }
 })

@@ -5,7 +5,6 @@
         <v-card class="elevation-12">
           <v-toolbar dark color="primary">
             <v-toolbar-title>Registration form</v-toolbar-title>
-
           </v-toolbar>
           <v-card-text>
             <v-form v-model="valid" ref="form" lazy-validation>
@@ -39,7 +38,12 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary" @click="onSubmit" :disabled="!valid">Create account</v-btn>
+            <v-btn
+              color="primary"
+              @click="onSubmit"
+              :disabled="!valid || loading"
+              :loading="loading"
+            >Create account</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -76,8 +80,19 @@
             email: this.email,
             password: this.password
           }
-          console.log(user)
+          this.$store.dispatch('registerUser', user)
+            .then(() => {
+              this.$router.push('/')
+            })
+            .catch(error => {
+              console.log(error.message)
+            })
         }
+      }
+    },
+    computed: {
+      loading () {
+        return this.$store.getters.loading
       }
     }
   }

@@ -80,9 +80,11 @@
           const ad = {
             title: this.title,
             description: this.description,
-            promo: this.promo
+            promo: this.promo,
+            imageSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vue.png/215px-Vue.png'
           }
           console.log(ad)
+          this.$store.dispatch('createAd', ad)
         }
       }
     }
